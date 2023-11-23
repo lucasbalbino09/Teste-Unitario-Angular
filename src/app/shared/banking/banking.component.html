@@ -1,0 +1,22 @@
+<p>
+    <strong>
+        Olá, Lucas Balbino
+    </strong>
+    <br>
+    Ag:9999, Co: 999999-99
+</p>
+
+<p>
+    Poupança : <span id="get-poupanca">{{getPoupanca()}}</span> 
+    <br>
+    <input id="input-sacar" type="text" #sacar>
+    <button id="sacar" (click)="setSacar(sacar.value)">Sacar</button>
+</p>
+
+<p>
+    Carteira :<span id="get-sacar">{{getCarteira()}}</span> 
+    <br>
+    <input id="input-depositar" type="text" #depositar>
+    <button id="depositar" (click)="setDepositar(depositar.value)">Depositar</button>
+</p>
+<app-list></app-list>
