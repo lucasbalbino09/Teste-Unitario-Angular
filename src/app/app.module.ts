@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TestandoComponent } from './testando/testando.component';
 import { BankingComponent } from './shared/banking/banking.component';
-import { ListComponent } from './shared/investiments/list/list.component';
+import { ListComponent } from './shared/investiments/components/list/list.component';
 
 @NgModule({
   declarations: [
