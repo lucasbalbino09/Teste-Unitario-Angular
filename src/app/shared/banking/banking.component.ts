@@ -1,20 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-banking',
-  templateUrl: './banking.component.html',
-  styleUrls: ['./banking.component.less']
+  templateUrl: './banking.component.html'
+  
 })
-export class BankingComponent {
-
+export class BankingComponent implements OnInit {
   private poupanca: number = 10;
   private carteira: number = 50;
+  nome : string = "Lucas Balbino";
 
-  public getPoupanca(): number {
-    return this.poupanca
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  get getPoupanca(): number {
+    return this.poupanca;
   }
-  public getCarteira(): number {
-    return this.carteira
+
+  get getCarteira(): number {
+    return this.carteira;
   }
 
   public setSacar(value: string): number | undefined {
@@ -23,19 +28,19 @@ export class BankingComponent {
     if (isNaN(sacar) || this.poupanca < sacar) {
       return;
     }
-    this.poupanca -= sacar
+
+    this.poupanca -= sacar;
     return (this.carteira += sacar);
   }
 
   public setDepositar(value: string): number | undefined {
     const depositar = Number(value);
+
     if (isNaN(depositar) || this.carteira < depositar) {
       return;
     }
 
-    this.carteira -= depositar
+    this.carteira -= depositar;
     return (this.poupanca += depositar);
   }
-
-
 }

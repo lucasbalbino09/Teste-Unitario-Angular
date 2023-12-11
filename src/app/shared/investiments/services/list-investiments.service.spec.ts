@@ -54,5 +54,8 @@ describe('ListInvestimentsService', () => {
     expect(service).toBeTruthy();
   });
 
+  it('(U) should be list all investiments', (done) => {
+    done();
+  });
 
 });
