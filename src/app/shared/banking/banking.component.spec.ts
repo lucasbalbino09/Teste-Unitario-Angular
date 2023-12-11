@@ -77,11 +77,11 @@ describe('BankingComponent', () => {
   it(`(i) setDepoistar(): shoud transfer carteira from poupanca `, () => {
     let element = fixture.debugElement.nativeElement;
 
-    element.querySelector('#input-depositar').value = "10"
+    element.querySelector('#input-depositar').value = '10';
     element.querySelector('#depositar').click();
     fixture.detectChanges();
 
-    expect(element.querySelector('#get-poupanca').textContent).toEqual('20');
+    expect(element.querySelector('#getPoupanca').textContent).toEqual('20');
 
   })
 });
