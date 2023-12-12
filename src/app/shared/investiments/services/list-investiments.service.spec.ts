@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { ListInvestimentsService } from './list-investiments.service';
 import { Investiments } from '../model/investiments';
+import { MOCK_LIST } from './list-investiments.mock';
 
 describe('ListInvestimentsService', () => {
 
@@ -14,28 +15,7 @@ describe('ListInvestimentsService', () => {
 
   const URL = 'https://raw.githubusercontent.com/troquatte/fake-server/main/investiments-all.json';
 
-  const mockList: Array<Investiments> = [
-    {
-      name: 'banco 1',
-      value: 100
-    },
-    {
-      name: 'banco 2',
-      value: 400
-    },
-    {
-      name: 'banco 3',
-      value: 400
-    },
-    {
-      name: 'banco 4',
-      value: 400
-    },
-    {
-      name: 'banco 5',
-      value: 400
-    }
-  ]
+  const mockList: Array<Investiments> = MOCK_LIST;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
@@ -55,7 +35,19 @@ describe('ListInvestimentsService', () => {
   });
 
   it('(U) should be list all investiments', (done) => {
-    done();
+    service.list().subscribe((res : Array<Investiments> ) => {
+      expect(res[0].name).toEqual('Itau');
+      expect(res[0].value).toEqual(100);      
+
+      expect(res[4].name).toEqual('banco 5');
+      expect(res[4].value).toEqual(400);      
+      done();
+    });
+
+    const req = httpTestingController.expectOne(URL);
+    req.flush(mockList);
+
+    expect(req.request.method).toEqual('GET');
   });
 
 });
